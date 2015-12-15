@@ -24,7 +24,7 @@ shinyServer(
     }
 )
 
-# ui 2 - prediction example
+##################################### ui 2 - prediction example######################################
 library(shiny)
 shinyUI(
     pageWithSidebar(
@@ -63,8 +63,7 @@ shinyServer(
 
 
 
-
-# 3  creating an image plot
+##################################### 3 - creating an image plot ######################################
 library(shiny)
 shinyUI(pageWithSidebar(
     
@@ -99,3 +98,10 @@ shinyServer(
         })
     }
 )
+
+
+##################################### 4- asd ######################################
+
+
+
+
