@@ -11,6 +11,3 @@ myHist <- function(mu){
     text(63, 140, paste("MSE = ", round(mse, 2)))
 }
 manipulate(myHist(mu), mu = slider(62, 74, step = 0.5))
-
-
-

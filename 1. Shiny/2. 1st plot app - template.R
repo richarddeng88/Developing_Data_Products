@@ -2,8 +2,8 @@ library(shiny)
 
 # USER INTERFACE
     ui <- fluidPage(
-        sliderInput(inputId = "num",               # input name for internal use
-                    label="choose a number",       # label to display 
+        sliderInput(inputId = "slider",               # input name for internal use
+                    label="choose a number",         # label to display 
                     value=300, min=1, max=1000),     # input specific argument
         
         numericInput(inputId = "number",
@@ -25,7 +25,7 @@ library(shiny)
     server <- function(input, output) {
         
         output$hist <- renderPlot({
-            plot(rnorm(input$num,0,1),pch=20)
+            plot(rnorm(input$slider,0,1),pch=20)
             #hist(iris$Sepal.Length)
         a})
         
