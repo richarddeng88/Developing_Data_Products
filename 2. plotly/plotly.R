@@ -30,3 +30,8 @@ library(plotly)
 p <- plot_ly(midwest, x = percollege, color = state, type = "box")
 # plotly_POST publishes the figure to your plotly account on the web
 plotly_POST(p, filename = "r-docs/midwest-boxplots", world_readable=TRUE)
+
+
+# test
+p <- ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, col=Species)) + geom_point()
+gg <- ggplotly(p)
