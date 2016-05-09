@@ -1,9 +1,7 @@
 library(shiny)
 
 # USER INTERFACE
-ui <- fluidPage(
-    
-)
+ui <- fluidPage( )
 
 server <- function(input, output) {
     
