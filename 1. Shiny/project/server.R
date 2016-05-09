@@ -1,4 +1,5 @@
 library(shiny);library(ISLR);library(MASS)
+
 auto =Auto
 names(auto)[c(2,4,5)] <- c("cyl","hp","wt")
 # auto$cyl <- log(auto$cyl); auto$hp <- log(auto$hp); auto$wt <- log(auto$wt)

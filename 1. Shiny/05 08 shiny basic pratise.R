@@ -39,10 +39,14 @@ ui <- fluidPage(
 
 
 server <- function(input, output){
+    
+        col <- reactive({
+            as.numeric(input$var)
+        })
         output$summary <- renderPrint(summary(iris))
         output$str <- renderPrint(str(iris))
         output$data <- renderTable({
-                col <- as.numeric(input$var)
+                # col <- as.numeric(input$var)
                 iris[col] # here if we wirte iris[,col], it is wrong, because it does not return a table, but a array of numbers.
                 #head(iris,10);
                 })
