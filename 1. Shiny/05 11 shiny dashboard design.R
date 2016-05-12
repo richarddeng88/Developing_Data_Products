@@ -62,11 +62,10 @@ ui <- dashboardPage(skin = "purple",
     
     sidebar <- dashboardSidebar(
         sidebarMenu(
+            sidebarSearchForm(textId = "searchText", buttonId = "searchButton",label = "Search..."),
+            menuItem("Geo",tabName = "geo",icon=icon("calendar")),
             menuItem("Exploratory Analysis", tabName = "eda", icon = icon("dashboard")),
             menuItem("Modeling", tabName = "modeling", icon = icon("th"),badgeLabel = "new", badgeColor = "green"),
-            menuItem("Geo",tabName = "geo",icon=icon("calendar")),
-            sidebarSearchForm(textId = "searchText", buttonId = "searchButton",
-                              label = "Search..."),
             menuItem("Source code", icon = icon("file-code-o"), 
                      href = "https://github.com/richarddeng88/citibike")
         )
