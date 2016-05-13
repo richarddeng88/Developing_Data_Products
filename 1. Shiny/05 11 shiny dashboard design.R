@@ -2,7 +2,7 @@ library(shiny);library(shinydashboard)
 
 ui <- dashboardPage(skin = "purple",
     
-    dashboardHeader(title= "Citi Bike Ridership",
+    dashboardHeader(title= "NYC Citibike Ridership",
                     
                     dropdownMenu(type = "messages",
                                  messageItem(
