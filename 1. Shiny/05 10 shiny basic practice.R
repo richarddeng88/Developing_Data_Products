@@ -6,6 +6,8 @@ ui <- fluidPage(
     sidebarLayout(
             sidebarPanel(  
                     
+                    
+                    
                     h3("Choose the dist type"),
                     actionButton("norm","Normal distribution"),
                     actionButton("unif","Uniform"),
