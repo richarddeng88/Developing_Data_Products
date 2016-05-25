@@ -5,6 +5,14 @@ ui <- fluidPage(
         sidebarLayout(
         sidebarPanel(    
                 h3("SidebarPanel"), h4("small widges"),
+                sliderInput("a",'test', min = as.POSIXct(0 * 3600, origin = "1970-01-01", tz = "UTC"),
+                            max=as.POSIXct(23* 3600, origin = "1970-01-01", tz = "UTC"),timeFormat ="%l %p",
+                            value=c(as.POSIXct(0* 3600, origin = "1970-01-01", tz = "UTC"),
+                                    as.POSIXct(23* 3600, origin = "1970-01-01", tz = "UTC"))),
+                
+                sliderInput("a",'test', 0,23,format ="%am",
+                            value=c(0.23)),
+                
                 selectInput("var", "1. select the variable", c("sepal.lenght"=1, "sepal,widtt"=2,"petal.length"=3,"petal.width"=4)),
                 sliderInput("bin", "2. select the number of bins", min=1,max=50, value=20),
                 radioButtons("color", "3. select the color of the hist", c("lightblue","red","darkgreen"),"lightblue"),
@@ -54,6 +62,7 @@ server <- function(input, output){
                 col <- as.numeric(input$var) # the value is character type, and has to be transfered to numeric
                 hist(iris[,col],breaks= input$bin,col=input$color, main="hist of iris data", xlab=names(iris)[col])
         })
+        
         output$name <- renderText(paste("your name is: ", input$name))
         output$size1 <- renderText(paste("your chosen size is : ", input$size))
         output$gender <- renderText(input$b)

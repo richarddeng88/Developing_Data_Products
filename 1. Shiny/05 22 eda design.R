@@ -24,6 +24,8 @@ ui <- fluidPage(
                      ),
                      mainPanel(
                          verbatimTextOutput("summary"),
+                         textOutput("date_start"),
+                         textOutput("date_end"),
                          verbatimTextOutput("tt"),
                          plotOutput("plot")
 
@@ -36,9 +38,6 @@ ui <- fluidPage(
 )
         
 
-# month <-
-# hour <-
-# unique <-
 
 
 
@@ -46,8 +45,11 @@ server <- function(input, output){
     
     
     output$summary <- renderPrint({
-        print(paste("the starting time is",input$date[1], "the ending time is ",input$date[2]))
+        print(paste("the starting date is",input$date[1], "the ending date is ",input$date[2]))
     })
+    
+        output$date_start <- renderText(paste("The starting date is: ", input$date[1]))
+        output$date_end <- renderText(paste("The ending date is: ", input$date[2]))
     
     data<- reactive({
              dis <- switch(input$weekday,
@@ -59,7 +61,8 @@ server <- function(input, output){
              ff <- kk[kk$is_weekday==dis & kk$gender== gen & kk$hour>=input$hour[1] & kk$hour<=input$hour[2],]
              #filter(kk, is_weekday==dis)
              ff <- ff[ff$date>=input$date[1] & ff$date <= input$date[2],]
-             ff %>% group_by(hour) %>% summarize(trips= sum(trips))
+             ff %>% group_by(hour) %>% summarize(trips= sum(trips)) %>% 
+                 mutate(timestamp_for_x_axis = as.POSIXct(hour * 3600, origin = "1970-01-01", tz = "UTC"))
              
     })
     
@@ -67,8 +70,9 @@ server <- function(input, output){
     output$plot <- renderPlot({
         
         bb <- data()
-        ggplot(bb, aes(x=hour, y=trips, color="blue"))+
-            geom_bar(stat="identity",position="dodge",color="black")
+        ggplot(bb, aes(x=timestamp_for_x_axis, y=trips, color="blue"))+
+            geom_bar(stat="identity",position="dodge",color="black") +
+            scale_x_datetime("", labels = date_format("%l %p")) 
         
     })
     
