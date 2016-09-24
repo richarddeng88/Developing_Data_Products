@@ -19,8 +19,9 @@ plot_ly(d, x = carat, y = price, text = paste("Clarity: ", clarity),
 p <- ggplot(data = d, aes(x = carat, y = price)) +
     geom_point(aes(text = paste("Clarity:", clarity)), size = 4) +
     geom_smooth(aes(colour = cut, fill = cut)) + facet_wrap(~ cut)
-
+p
 gg <- ggplotly(p)
+gg
 
 # sample 4 - with a matrix
 plot_ly(z = volcano, type = "surface")
@@ -34,4 +35,6 @@ plotly_POST(p, filename = "r-docs/midwest-boxplots", world_readable=TRUE)
 
 # test
 p <- ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, col=Species)) + geom_point()
+p
 gg <- ggplotly(p)
+gg
