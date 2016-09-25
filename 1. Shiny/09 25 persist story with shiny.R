@@ -1,5 +1,20 @@
 library(shiny)
 
+saveData <- function(data) {
+    data <- as.data.frame(t(data))
+    if (exists("responses")) {
+        responses <<- rbind(responses, data)
+    } else {
+        responses <<- data
+    }
+}
+
+loadData <- function() {
+    if (exists("responses")) {
+        responses
+    }
+}
+
 # Define the fields we want to save from the form
 fields <- c("name", "used_shiny", "r_num_years")
 
@@ -33,3 +48,4 @@ shinyApp(
         })     
     }
 )
+
