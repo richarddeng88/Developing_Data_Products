@@ -1,11 +1,18 @@
 library(shiny)
 library(RMySQL)
 
+####### create a db and tabe in MySQL 
+# create table responses (
+#     name varchar(40),
+#     used_shiny varchar(30),
+#     r_num_years int
+# );
+
 options(mysql = list(
     "host" = "127.0.0.1",
     "port" = 3306,
-    "user" = "myuser",
-    "password" = "mypassword"
+    "user" = "root",
+    "password" = "1234"
 ))
 databaseName <- "myshinydatabase"
 table <- "responses"
